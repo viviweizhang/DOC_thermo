@@ -37,13 +37,15 @@ F = 96485.3321 #s A / mol
 
 
 
-#%%
+
+
+# %%
 from scipy.optimize import fsolve
 df = pd.read_excel("base & acid_mol.xlsx")
 pH_values = []
 Q_base = []
 Q_acid = []
-#%%
+
 for index, row in df.iterrows():
     pH_final = row.iloc[0]  # pH is the first column
     CO2 = row.iloc[1]  
@@ -59,7 +61,7 @@ for index, row in df.iterrows():
         Q1 = ((CO2-CO2_0) -CO3+ CO3_0 -2*CaMgCO32 + 10**(-pH_final) - 10**(-8.1))*F
 
     else:
-        Q1 = None 
+        Q1 = None
     
     pH_values.append(pH_final)
     Q_base.append(Q)
@@ -74,3 +76,13 @@ df_output = pd.DataFrame({
 
 df_output.to_excel("output_Q.xlsx", index=False)
 
+
+
+
+
+
+
+
+
+
+# %%
